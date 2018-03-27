@@ -1,0 +1,17 @@
+1.–азработать web server, 
+ с использованием NodeJS + ExpressJS: http://expressjs.com/uk/starter/hello-world.html
+ ¬ качестве front-end использовать JQuery или ReactJS.
+
+
+ѕриложение должно отображать список дел за день. 
+ Ќапример [{ТcompletedТ: true, ТtitleТ: ТTest taskТ, СdescriptionТ: ТTest DescriptionТ}]. 
+ћожно отдавать статические данные.
+
+Ќа серверной стороне по адресу 
+http://localhost должно возвращатьс€ html с страничкой, котора€ выполнит ajax запрос на адрес http://localhost/tasks и получит данные с сервера в формате JSON, 
+распарсит их и отобразит пользователю в виде списка с соответствующей отметкой в зависимости от значени€ в поле completed (true/false);
+
+ѕо любым вопросам можно обращатьс€ по почте или в skype: debian1991
+
+— уважением, 
+ƒмитрий.

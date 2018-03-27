@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Список заданий</title>
+  <link  rel = "stylesheet" href="/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <script src="vendor/bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+  <h1>Список заданий</h1>
+  <table class="table table-condensed table-striped table-bordered">
+    <thead><tr><th>Id</th><th>Title</th><th>Description</th><th>Completed</th><th></th></tr></thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    // Получение всех пользователей
+    function GetTasks() {
+      $.ajax({
+        url: "/tasks", //url запрашиваемой страницы//страница на которую будет отправлен запрос
+        type: "GET", //POST либо GET.
+        contentType: "application/json",
+        success: function (tasks) { //Вешаем свой обработчик //локальный AJAX Event, срабатывает если ошибок не возникло
+          var rows = "";
+          $.each(tasks, function (index, task) { //обрабатывем полученные данные
+            // добавляем полученные элементы в таблицу
+            rows += row(task);
+          })
+          $('table tbody').append(rows);
+        }
+      });
+    }
+
+    // создание строки для таблицы
+    var row = function (task) {
+        return "<tr data-rowid='" + task.id + "'>" +
+          "<td>" + task.id + "</td>" +
+          "<td>" + task.title + "</td>" +
+          "<td>" + task.description + "</td>" +
+          "<td>" + task.completed + "</td>" +
+          "<td><a class='editLink' data-id='" + task.id + "'>Изменить</a> | " +
+          "<a class='removeLink' data-id='" + task.id + "'>Удалить</a>"+
+          "</td></tr>";
+      }
+    // загрузка пользователей
+    GetTasks();
+
+  </script>
+</body>
+</html>
